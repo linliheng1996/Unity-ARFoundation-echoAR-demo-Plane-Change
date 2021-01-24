@@ -8,7 +8,7 @@ Don't have an API key? Make sure to register for FREE at [echoAR](https://consol
 * Clone this project and open in Unity.
 * Load the PlaneChanger scene from the `Assets/Scenes` folder in Unity.
 * Set your echoAR API key in the echoAR prefab.
-* Add images from the Images folder to the echoAR console.
+* Add images from the [Images](/Images) folder to the echoAR console.
 
 
 ## Run
@@ -22,4 +22,6 @@ Refer to our [documentation](https://docs.echoar.xyz/unity/) to learn more about
 ## Support
 Feel free to reach out at [support@echoAR.xyz](mailto:support@echoAR.xyz) or join our [support channel on Slack](https://join.slack.com/t/echoar/shared_invite/enQtNTg4NjI5NjM3OTc1LWU1M2M2MTNlNTM3NGY1YTUxYmY3ZDNjNTc3YjA5M2QyNGZiOTgzMjVmZWZmZmFjNGJjYTcxZjhhNzk3YjNhNjE).
 
-##Screenshots
+## Screenshots
+![Phone screenshot](/media/PlaneChange.gif)
+![Unity screenshot](/media/Snip20210123_2.png)
