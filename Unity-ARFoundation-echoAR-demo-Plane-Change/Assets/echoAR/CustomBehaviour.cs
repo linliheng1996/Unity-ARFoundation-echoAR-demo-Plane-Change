@@ -1,0 +1,62 @@
+﻿/**************************************************************************
+* Copyright (C) echoAR, Inc. 2018-2020.                                   *
+* echoAR, Inc. proprietary and confidential.                              *
+*                                                                         *
+* Use subject to the terms of the Terms of Service available at           *
+* https://www.echoar.xyz/terms, or another agreement                      *
+* between echoAR, Inc. and you, your company or other organization.       *
+***************************************************************************/
+using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+
+public class CustomBehaviour : MonoBehaviour
+{
+    [HideInInspector]
+    public Entry entry;
+
+    /// <summary>
+    /// EXAMPLE BEHAVIOUR
+    /// Queries the database and names the object based on the result.
+    /// </summary>
+
+    // Use this for initialization
+    void Start()
+    {
+        // Add RemoteTransformations script to object and set its entry
+        this.gameObject.AddComponent<RemoteTransformations>().entry = entry;
+
+        // Qurey additional data to get the name
+        string value = "";
+        if (entry.getAdditionalData() != null && entry.getAdditionalData().TryGetValue("name", out value))
+        {
+            // Set name
+            this.gameObject.name = value;
+        }
+
+        this.gameObject.GetComponent<Renderer>().enabled = false;
+
+        Hologram hologram = entry.getHologram();
+        Hologram.hologramType hologramType = hologram.getType();
+        // Check for image hologram
+        if (hologramType == Hologram.hologramType.IMAGE_HOLOGRAM){
+            // Get mesh renderer
+            MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
+            // Get material and texture
+            Material material = meshRenderer.material;
+            Texture texture = material.mainTexture;
+            // Get session and face switcher
+            GameObject session = GameObject.Find("AR Session Origin");
+            // Get AR Plane Manager
+            ARPlaneManager aRPlaneManager = session.GetComponent<ARPlaneManager>();
+            // Change the material of the prefab of AR Plane Manager
+            aRPlaneManager.planePrefab.GetComponent<MeshRenderer>().sharedMaterial = material;
+
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}
